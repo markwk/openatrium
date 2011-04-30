@@ -6,8 +6,8 @@
 function openatrium_profile_details() {
   return array(
     'name' => 'Open Atrium',
-    'description' => 'Open Atrium by Phase2 Technology.',
-    'old_short_name' => 'atrium_installer',
+    'description' => 'AtriumED, Open Atrium for Educators and Schools.',
+    'old_short_name' => 'eduglu_profile',
   );
 }
 
@@ -91,7 +91,7 @@ function _openatrium_atrium_modules() {
     // Core features
     'book',
     // Casetracker
-    'casetracker',
+    // 'casetracker',
     // Calendar, date
     'date', 'date_popup', 'litecal',
     // CCK
@@ -102,18 +102,20 @@ function _openatrium_atrium_modules() {
     //'mailhandler', 'mailcomment',
     'notifications_team',
     // Content profile
-    'content_profile',
+    'content_profile', 'realname', 'autonode_title', 'profile_based_realnames',
     // Atrium features
-    'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', 'atrium_casetracker', 'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
+    'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', 'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
     // Dashboard
     'spaces_dashboard', 'jquery_ui',
     // Formats
-    'codefilter', 'markdown',
+    'codefilter', // 'markdown',
+    // 'typogrify',
     // Others
     'boxes', 'comment_upload', 'crayon', 'diff', 'itweak_upload', 'imagecache_profiles', 'nodeformcols', 'prepopulate', 'reldate', 'xref',
     // Added Modules
 	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', 'poll',
 	// LC Added
+	'quiz', 'quiz_question', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
     'embed_video', 'imageboard', 'polls',
     // DesignKit
     'color', 'designkit',
@@ -294,13 +296,13 @@ function _openatrium_intranet_configure_check() {
     'atrium_members' => array('user_permission', 'variable'),
     'atrium_profile' => array('user_permission', 'variable'),
     'atrium_shoutbox' => array('user_permission', 'variable'),
+    'profile_based_realnames' => array('user_permission', 'variable'),
     'embed_video' => array('user_permission', 'variable'),
     'polls' => array('user_permission', 'variable'),
     'imageboard' => array('user_permission', 'variable'),
   );
   features_revert($revert);
 }
-
 /**
  * Finish configuration batch
  * 
