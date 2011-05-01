@@ -6,8 +6,8 @@
 function openatrium_profile_details() {
   return array(
     'name' => 'Open Atrium',
-    'description' => 'AtriumED, Open Atrium for Educators and Schools.',
-    'old_short_name' => 'eduglu_profile',
+    'description' => 'Open Atrium by Phase2 Technology.',
+    'old_short_name' => 'atrium_installer',
   );
 }
 
@@ -104,21 +104,22 @@ function _openatrium_atrium_modules() {
     // Content profile
     'content_profile', 'realname', 'autonode_title', 'profile_based_realnames',
     // Atrium features
-    'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', 'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
+    'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', // 'atrium_casetracker', 
+    'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
     // Dashboard
     'spaces_dashboard', 'jquery_ui',
     // Formats
     'codefilter', // 'markdown',
-    // 'typogrify',
     // Others
     'boxes', 'comment_upload', 'crayon', 'diff', 'itweak_upload', 'imagecache_profiles', 'nodeformcols', 'prepopulate', 'reldate', 'xref',
-    // Added Modules
-	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', 'poll',
-	// LC Added
-	'quiz', 'quiz_question', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
-    'embed_video', 'imageboard', 'polls',
     // DesignKit
     'color', 'designkit',
+    // Added Modules
+	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', // 'poll',
+	// LC Added
+	// 'quiz', 'quiz_question', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
+    'embed_video', 'imageboard', // 'polls',
+    'words2words',
   );
 }
 
@@ -252,7 +253,7 @@ function _openatrium_intranet_configure() {
   variable_set('date_default_timezone', $tz_offset);
 
   // Set a default footer message.
-  variable_set('site_footer', l('Language Corner', 'http://language-corner.org', array('absolute' => TRUE)) . ' was built by '. l('Int3c', 'http://int3c.com', array('absolute' => TRUE)));
+  variable_set('site_footer', 'Built with '. l('Open Atrium', 'http://www.openatrium.com', array('absolute' => TRUE)));
 }
 
 /**
@@ -291,18 +292,20 @@ function _openatrium_intranet_configure_check() {
     'atrium_blog' => array('user_permission', 'variable'),
     'atrium_book' => array('user_permission', 'variable'),
     'atrium_calendar' => array('user_permission', 'variable'),
-    'atrium_casetracker' => array('user_permission', 'variable'),
+    // 'atrium_casetracker' => array('user_permission', 'variable'),
     'atrium_groups' => array('user_permission', 'variable'),
     'atrium_members' => array('user_permission', 'variable'),
     'atrium_profile' => array('user_permission', 'variable'),
     'atrium_shoutbox' => array('user_permission', 'variable'),
     'profile_based_realnames' => array('user_permission', 'variable'),
     'embed_video' => array('user_permission', 'variable'),
-    'polls' => array('user_permission', 'variable'),
+    // 'polls' => array('user_permission', 'variable'),
     'imageboard' => array('user_permission', 'variable'),
+    'words2words' => array('user_permission', 'variable'), 
   );
   features_revert($revert);
 }
+
 /**
  * Finish configuration batch
  * 
