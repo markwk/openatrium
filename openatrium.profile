@@ -5,8 +5,8 @@
  */
 function openatrium_profile_details() {
   return array(
-    'name' => 'Open Atrium',
-    'description' => 'Open Atrium by Phase2 Technology.',
+    'name' => 'AtriumED',
+    'description' => 'AtriumED, an educationally minded intranet.',
     'old_short_name' => 'atrium_installer',
   );
 }
@@ -115,11 +115,11 @@ function _openatrium_atrium_modules() {
     // DesignKit
     'color', 'designkit',
     // Added Modules
-	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', // 'poll',
+	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', 'poll',
 	// LC Added
-	// 'quiz', 'quiz_question', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
-    'embed_video', 'imageboard', // 'polls',
-    'words2words',
+	'quiz', 'quiz_question', 'matching', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
+    'embed_video', 'imageboard', 'polls',
+    // 'words2words',
   );
 }
 
@@ -299,9 +299,10 @@ function _openatrium_intranet_configure_check() {
     'atrium_shoutbox' => array('user_permission', 'variable'),
     'profile_based_realnames' => array('user_permission', 'variable'),
     'embed_video' => array('user_permission', 'variable'),
-    // 'polls' => array('user_permission', 'variable'),
+    'polls' => array('user_permission', 'variable'),
     'imageboard' => array('user_permission', 'variable'),
     'words2words' => array('user_permission', 'variable'), 
+    'lc_quiz' => array('user_permission', 'variable'),     
   );
   features_revert($revert);
 }
