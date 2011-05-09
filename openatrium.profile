@@ -35,7 +35,7 @@ function openatrium_profile_modules() {
     // Views
     'views',
     // OG
-    'og', 'og_access', 'og_views',
+    'og', 'og_access', 'og_views', // 'og_reg_keys',
     // CTools
     'ctools',
     // Context
@@ -66,6 +66,8 @@ function openatrium_profile_modules() {
     'ucreate', 'ucreate_og',
     // WYSIWYG, Flags
     'flag', 'wysiwyg',
+    // Unique Avatar
+    'unique_avatar',
   );
 
   // If language is not English we add the 'atrium_translate' module the first
@@ -101,8 +103,10 @@ function _openatrium_atrium_modules() {
     // Notifications
     //'mailhandler', 'mailcomment',
     'notifications_team',
+    // Talk
+    'talk',
     // Content profile
-    'content_profile', 'realname', 'autonode_title', 'profile_based_realnames',
+    'content_profile', // 'realname', 'autonode_title', 'profile_based_realnames',
     // Atrium features
     'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', // 'atrium_casetracker', 
     'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
@@ -297,7 +301,7 @@ function _openatrium_intranet_configure_check() {
     'atrium_members' => array('user_permission', 'variable'),
     'atrium_profile' => array('user_permission', 'variable'),
     'atrium_shoutbox' => array('user_permission', 'variable'),
-    'profile_based_realnames' => array('user_permission', 'variable'),
+    // 'profile_based_realnames' => array('user_permission', 'variable'),
     'embed_video' => array('user_permission', 'variable'),
     'polls' => array('user_permission', 'variable'),
     'imageboard' => array('user_permission', 'variable'),
@@ -380,7 +384,7 @@ function system_form_install_select_locale_form_alter(&$form, $form_state) {
  * Alter the install profile configuration form and provide timezone location options.
  */
 function system_form_install_configure_form_alter(&$form, $form_state) {
-  $form['site_information']['site_name']['#default_value'] = 'Open Atrium';
+  $form['site_information']['site_name']['#default_value'] = 'AtriumED';
   $form['site_information']['site_mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
   $form['admin_account']['account']['mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
