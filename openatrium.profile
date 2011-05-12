@@ -63,7 +63,7 @@ function openatrium_profile_modules() {
     // Spaces
     'spaces', 'spaces_user', 'spaces_og',
     // Ucreate
-    'ucreate', 'ucreate_og',
+    // 'ucreate', 'ucreate_og',
     // WYSIWYG, Flags
     'flag', 'wysiwyg',
     // Unique Avatar
