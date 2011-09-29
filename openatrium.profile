@@ -5,8 +5,8 @@
  */
 function openatrium_profile_details() {
   return array(
-    'name' => 'AtriumED',
-    'description' => 'AtriumED, an educationally minded intranet.',
+    'name' => 'Language Corner',
+    'description' => 'Language Corner by Int3c.',
     'old_short_name' => 'atrium_installer',
   );
 }
@@ -35,7 +35,7 @@ function openatrium_profile_modules() {
     // Views
     'views',
     // OG
-    'og', 'og_access', 'og_views', // 'og_reg_keys',
+    'og', 'og_access', 'og_views',
     // CTools
     'ctools',
     // Context
@@ -64,10 +64,11 @@ function openatrium_profile_modules() {
     'spaces', 'spaces_user', 'spaces_og',
     // Ucreate
     // 'ucreate', 'ucreate_og',
-    // WYSIWYG, Flags
-    'flag', 'wysiwyg',
-    // Unique Avatar
-    'unique_avatar',
+    // jQuery Update
+    'jquery_update',
+	// Wysiwyg + Better Formats
+	'wysiwyg', 'better_formats',
+	'googleanalytics',
   );
 
   // If language is not English we add the 'atrium_translate' module the first
@@ -103,13 +104,11 @@ function _openatrium_atrium_modules() {
     // Notifications
     //'mailhandler', 'mailcomment',
     'notifications_team',
-    // Talk
-    'talk',
     // Content profile
-    'content_profile', // 'realname', 'autonode_title', 'profile_based_realnames',
+    'content_profile',
     // Atrium features
     'atrium', 'atrium_activity', 'atrium_blog', 'atrium_book', 'atrium_calendar', // 'atrium_casetracker', 
-    'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
+'atrium_groups', 'atrium_members', 'atrium_profile', 'atrium_shoutbox',
     // Dashboard
     'spaces_dashboard', 'jquery_ui',
     // Formats
@@ -118,12 +117,29 @@ function _openatrium_atrium_modules() {
     'boxes', 'comment_upload', 'crayon', 'diff', 'itweak_upload', 'imagecache_profiles', 'nodeformcols', 'prepopulate', 'reldate', 'xref',
     // DesignKit
     'color', 'designkit',
-    // Added Modules
-	'emfield', 'emvideo', 'media_ted', 'media_youtube', 'filefield', 'imagefield', 'poll',
-	// LC Added
-	'quiz', 'quiz_question', 'matching', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'lc_quiz',
-    'embed_video', 'imageboard', 'polls',
-    // 'words2words',
+	// Quizlet
+	'quizlet', 'atriumed_quizlet',
+	// Polls 
+	'poll', 'atrium_polls',
+	// Quizzes
+	// 'quiz', 'quiz_question', 'matching', 'quiz_stats', 'truefalse', 'short_answer', 'quiz_directions', 'multichoice', 'long_answer', 'atrium_quiz',
+	// OpenTok
+	'opentokapi', 'atrium_opentok',
+	// Embed Video
+	'media_youtube', 'media_vimeo', 'emvideo', 'emfield', 'content_permissions', 'embed_video',
+	// Imageboard
+	'filefield', 'imagefield', 'imageboard',
+	// Embedded Videos
+	'emfield', 'emvideo', 'media_vimeo', 'media_youtube', 'embed_video',
+	// Embedded Dictionary
+	'embed_wr_dictionary', 'atriumed_dictionary',
+	// Sign On Solution with OpenID
+	// 'openid_sso_relying',
+	// 'openid_client_ax',
+    // 'openid_profile',
+    // 'openid_cp_field',
+	// Customizations for Single Sign On
+	// 'relying_custom',
   );
 }
 
@@ -257,7 +273,53 @@ function _openatrium_intranet_configure() {
   variable_set('date_default_timezone', $tz_offset);
 
   // Set a default footer message.
-  variable_set('site_footer', 'Built with '. l('Open Atrium', 'http://www.openatrium.com', array('absolute' => TRUE)));
+  variable_set('site_footer', 'Built with '. l('Language Corner', 'http://language-corner.org', array('absolute' => TRUE)));
+
+	// Set Quixlet API Key.
+    variable_set('quizlet_api_key', '');
+
+	// Set OpenTok API Key.
+    variable_set('opentokapi_api_key', '');
+	variable_set('opentokapi_api_secret', '');
+	variable_set('opentokapi_staging', '1');
+	
+	// Set OpenID Provider.
+  variable_set('openid_sso_relying_provider', array(
+    'name' => 'Language Corner',
+    'url' => '',
+  ));
+
+// Set OpenID Mappings
+/*
+  variable_set('openid_profile_map', array(
+    'http://axschema.org/namePerson/friendly' => 'name',
+    'http://axschema.org/contact/email' => 'mail',
+	'http://axschema.org/media/image/aspect11' => 'picture',
+  ));
+  variable_set('openid_cp_field_map_profile', array(
+	  'http://axschema.org/contact/web/blog' => 'field_profile_url',
+	  'http://axschema.org/company/name' => 'field_profile_organization',
+	  'http://axschema.org/namePerson' => 'title',
+	  'http://axschema.org/contact/city/home' => 'field_location_city',
+	  'http://axschema.org/namePerson/first' => 'field_name_person_first',
+	  'http://axschema.org/namePerson/last' => 'field_name_person_last',
+	  'http://axschema.org/contact/country/home' => 'field_location_country',
+	  'http://axschema.org/contact/IM/ICQ' => 'field_twitter',
+	  'http://axschema.org/contact/IM/AIM' => 'field_social_connect',
+	  'http://axschema.org/birthDate' => 'field_birth_date',
+  ));
+*/
+
+// Set Google Analytics Codes for Language Corner Sites
+    variable_set('googleanalytics_account', 'UA-');
+    variable_set('googleanalytics_cache', '1');
+	variable_set('googleanalytics_domain_mode', '1');
+
+// Set WordReference.com UserID for Language Corner embedded dictionary
+    variable_set('wr_userid', '');
+
+
+
 }
 
 /**
@@ -278,8 +340,8 @@ function _openatrium_intranet_configure_check() {
   _openatrium_system_theme_data();
   db_query("UPDATE {blocks} SET status = 0, region = ''"); // disable all DB blocks
   db_query("UPDATE {system} SET status = 0 WHERE type = 'theme' and name ='%s'", 'garland');
-  db_query("UPDATE {system} SET status = 0 WHERE type = 'theme' and name ='%s'", 'ginkgo');
-  variable_set('theme_default', 'ginkgo');
+  db_query("UPDATE {system} SET status = 0 WHERE type = 'theme' and name ='%s'", 'oak');
+  variable_set('theme_default', 'oak');
 
   // In Aegir install processes, we need to init strongarm manually as a
   // separate page load isn't available to do this for us.
@@ -301,12 +363,14 @@ function _openatrium_intranet_configure_check() {
     'atrium_members' => array('user_permission', 'variable'),
     'atrium_profile' => array('user_permission', 'variable'),
     'atrium_shoutbox' => array('user_permission', 'variable'),
-    // 'profile_based_realnames' => array('user_permission', 'variable'),
-    'embed_video' => array('user_permission', 'variable'),
-    'polls' => array('user_permission', 'variable'),
-    'imageboard' => array('user_permission', 'variable'),
-    'words2words' => array('user_permission', 'variable'), 
-    'lc_quiz' => array('user_permission', 'variable'),     
+	'atriumed_quizlet' => array('user_permission', 'variable'),
+	'atrium_polls' => array('user_permission', 'variable'),
+	// 'atrium_quiz' => array('user_permission', 'variable'),
+	'embed_video'  => array('user_permission', 'variable'),
+	'imageboard' => array('user_permission', 'variable'),
+	'atrium_opentok' => array('user_permission', 'variable'),
+	'embed_video' => array('user_permission', 'variable'),
+	'atriumed_dictionary' => array('user_permission', 'variable'),
   );
   features_revert($revert);
 }
@@ -384,10 +448,12 @@ function system_form_install_select_locale_form_alter(&$form, $form_state) {
  * Alter the install profile configuration form and provide timezone location options.
  */
 function system_form_install_configure_form_alter(&$form, $form_state) {
-  $form['site_information']['site_name']['#default_value'] = 'AtriumED';
-  $form['site_information']['site_mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+  $form['site_information']['site_name']['#default_value'] = 'Language Corner';
+//   $form['site_information']['site_mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+$form['site_information']['site_mail']['#default_value'] = 'admin@localhost.com';
   $form['admin_account']['account']['name']['#default_value'] = 'admin';
-  $form['admin_account']['account']['mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+//   $form['admin_account']['account']['mail']['#default_value'] = 'admin@'. $_SERVER['HTTP_HOST'];
+	$form['admin_account']['account']['mail']['#default_value'] = 'admin@localhost.com';
 
   if (function_exists('date_timezone_names') && function_exists('date_timezone_update_site')) {
     $form['server_settings']['date_default_timezone']['#access'] = FALSE;
